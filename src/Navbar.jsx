@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import { Navbar, Nav, Form, FormControl } from "react-bootstrap";
+import { Navbar, Nav, Form, FormControl, NavDropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import productCategories from "./productCategories";
+import spaceCategories from "./spaceCategories";
+import brandCategories from "./brandCategories";
 
 export default function MyNavbar({ onSearch }) {
+  const { categories, loading } = productCategories();
+  const { spaces, loading: loadingSpaces } = spaceCategories();
+  const { brands, loading: loadingBrands } = brandCategories();
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
@@ -25,9 +31,59 @@ export default function MyNavbar({ onSearch }) {
 
         <Navbar.Collapse id="navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/products">Products</Nav.Link>
-            <Nav.Link as={Link} to="/brands">Brands</Nav.Link>
-            <Nav.Link as={Link} to="/spaces">Spaces</Nav.Link>
+             {/* Dynamic Products dropdown */}
+            <NavDropdown title="Products" id="products-dropdown">
+
+              {loading && <NavDropdown.Item disabled>Loading...</NavDropdown.Item>}
+
+              {!loading &&
+                categories.map((item, index) => (
+                  <NavDropdown.Item
+                    key={index}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.label}
+                  </NavDropdown.Item>
+                ))}
+            </NavDropdown>
+            <NavDropdown title="Brands" id="brands-dropdown">
+              {loadingBrands && (
+                <NavDropdown.Item disabled>Loading…</NavDropdown.Item>
+              )}
+
+              {!loadingBrands &&
+                brands.map((item, index) => (
+                  <NavDropdown.Item
+                    key={index}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.label}
+                  </NavDropdown.Item>
+                ))}
+            </NavDropdown>
+            {/* Spaces Dropdown */}
+            <NavDropdown title="Spaces" id="spaces-dropdown">
+              {loadingSpaces && (
+                <NavDropdown.Item disabled>Loading…</NavDropdown.Item>
+              )}
+
+              {!loadingSpaces &&
+                spaces.map((item, index) => (
+                  <NavDropdown.Item
+                    key={index}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.label}
+                  </NavDropdown.Item>
+                ))}
+            </NavDropdown>
+
             <Nav.Link as={Link} to="/retailer">Find a Retailer</Nav.Link>
             <Nav.Link as={Link} to="/insights">Insights</Nav.Link>
             <Nav.Link as={Link} to="/about">About</Nav.Link>
