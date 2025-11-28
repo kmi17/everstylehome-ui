@@ -52,7 +52,7 @@ export default function ProductCollectionPage() {
                 <p className="text-muted">${product.price}</p>
                 <p className="card-text small">{product.description}</p>
 
-                <a className="btn btn-primary" href={`/product/${product.slug}`}>
+                <a className="btn btn-primary" href={`/products/${product.slug}`}>
                   View Product
                 </a>
               </div>
