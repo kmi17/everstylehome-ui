@@ -41,14 +41,14 @@ export default function MyNavbar({ onSearch }) {
                 categories.map((item, index) => (
                   <NavDropdown.Item
                     key={index}
-                    href={item.slug}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    as={Link}
+                    to={item.slug}
                   >
                     {item.name}
                   </NavDropdown.Item>
                 ))}
             </NavDropdown>
+
             <NavDropdown title="Brands" id="brands-dropdown">
               {loadingBrands && (
                 <NavDropdown.Item disabled>Loading…</NavDropdown.Item>

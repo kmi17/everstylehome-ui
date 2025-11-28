@@ -5,6 +5,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from "./Navbar.jsx";
 import TopBar from "./Topbar.jsx";
+import ProductCollectionPage from "./ProductCollectionPage";
 
 
 function App() {
@@ -22,6 +23,15 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+
+      <Routes>
+
+        {/* Dynamic category page */}
+        <Route path=":slug" element={<ProductCollectionPage />} />
+
+        {/* Catch-all 404 */}
+        <Route path="*" element={<div className="p-4">404 - Not Found</div>} />
+      </Routes>
       <h1>Ever Style Home</h1>
       </BrowserRouter>
     </>
