@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {get} from "./utils/api";
 
-
 export default function ProductDetailPage() {
   const { slug } = useParams();
   const [product, setProduct] = useState(null);
@@ -29,76 +28,107 @@ export default function ProductDetailPage() {
   return (
     <div className="container py-4">
 
-      {/* NAME + PRICE */}
-      <h2 className="fw-bold">{product.name}</h2>
-      <p className="text-muted fs-5">${product.price}</p>
+      {/* Breadcrumb (optional) */}
+      {/* Example: Home > Products > Collection > Product */}
+      
+      {/* <nav aria-label="breadcrumb" className="mb-3">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item"><a href="/">Home</a></li>
+          <li className="breadcrumb-item"><a href="/products">Products</a></li>
+          {/*  <li className="breadcrumb-item active" aria-current="page">{product.name}</li>
+        </ol>
+      </nav> */}
 
-      {/* IMAGE GALLERY */}
-      <div className="d-flex gap-3 mb-4">
-        {product.images?.map((img) => (
-          <img
-            key={img.id}
-            src={img.url}
-            alt={product.name}
-            style={{
-              width: "200px",
-              height: "200px",
-              objectFit: "cover",
-              borderRadius: "8px"
-            }}
-          />
-        ))}
-      </div>
+      {/* Product title */}
+      <h1 className="fw-bold mb-4">{product.name}</h1>
 
-      {/* DESCRIPTION */}
-      <p className="mb-4">{product.description}</p>
-
-      <hr />
-
-      {/* ATTRIBUTES */}
-      <h4 className="fw-bold mt-4">Attributes</h4>
-      <div className="row mt-3">
-        {product.attributes?.map((attr) => (
-          <div key={attr.id} className="col-md-4 mb-4">
-            <div className="card shadow-sm">
-              {attr.image && (
-                <img
-                  src={attr.image}
-                  alt={attr.description}
-                  className="card-img-top"
-                  style={{ height: "200px", objectFit: "cover" }}
-                />
-              )}
-              <div className="card-body">
-                <h6 className="fw-bold">{attr.description}</h6>
-                <p className="mb-1">SKU: {attr.sku}</p>
-                <p className="mb-1">UPC: {attr.upc}</p>
-                <p className="mb-2">Case Pack: {attr.casePack}</p>
-
-                {attr.addToQuote ? (
-                  <button className="btn btn-success w-100">
-                    Add to Quote
-                  </button>
-                ) : (
-                  <button className="btn btn-secondary w-100" disabled>
-                    Not Available for Quote
-                  </button>
-                )}
-              </div>
+      <div className="row">
+        {/* Left: image gallery */}
+        <div className="col-md-6">
+          {product.images && product.images.length > 0 && (
+            <div className="mb-3">
+              <img
+                src={product.images[0].url}
+                alt={product.name}
+                className="img-fluid rounded"
+              />
             </div>
+          )}
+
+          {/* Thumbnail list */}
+          <div className="d-flex flex-wrap gap-2">
+            {product.images.map((img) => (
+              <img
+                key={img.id}
+                src={img.url}
+                alt={product.name}
+                className="img-thumbnail"
+                style={{ width: "80px", height: "80px", objectFit: "cover" }}
+              />
+            ))}
           </div>
-        ))}
+        </div>
+
+        {/* Right: details */}
+        <div className="col-md-6">
+
+          <p className="lead mb-4">{product.description}</p>
+
+          {/* Attributes / variants table */}
+          {product.attributes && (
+            <div className="table-responsive mb-4">
+              <table className="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>SKU</th>
+                    <th>UPC</th>
+                    <th>Case Pack</th>
+                    <th>Quote</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {product.attributes.map((attr) => (
+                    <tr key={attr.id}>
+                      <td>
+                        {attr.image && <img src={attr.image} alt={attr.description} style={{ width: "60px", height: "60px", objectFit: "cover" }} />}
+                      </td>
+                      <td>{attr.description}</td>
+                      <td>{attr.sku}</td>
+                      <td>{attr.upc}</td>
+                      <td>{attr.casePack}</td>
+                      <td>
+                        {attr.addToQuote ? (
+                          <button className="btn btn-sm btn-success">Add to Quote</button>
+                        ) : (
+                          <span className="text-muted">—</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {/* Recommended spaces (tags/categories) */}
+          {product.spaces && (
+            <div className="mb-4">
+              <strong>Recommended For:</strong>
+              <ul>
+                {product.spaces.map((space) => (
+                  <li key={space.id}>{space.name}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Add more sections if needed (e.g. add to cart, related products) */}
+        </div>
       </div>
 
-      <hr />
-
-      {/* SPACES */}
-      <h4 className="fw-bold mt-4">Recommended For</h4>
-      <ul className="mt-2">
-        {product.spaces?.map((space) => (
-          <li key={space.id}>{space.name}</li>
-        ))}
-      </ul>
+      {/* Related products or other footer details can go below */}
     </div>
   );
 }

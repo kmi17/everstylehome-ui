@@ -58,11 +58,10 @@ export default function MyNavbar({ onSearch }) {
                 brands.map((item, index) => (
                   <NavDropdown.Item
                     key={index}
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                     as={Link}
+                    to={item.slug}
                   >
-                    {item.label}
+                    {item.name}
                   </NavDropdown.Item>
                 ))}
             </NavDropdown>

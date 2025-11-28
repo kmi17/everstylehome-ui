@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {get} from "./utils/api"
 
 export default function useBrandCategories() {
   const [brands, setBrands] = useState([]);
@@ -7,8 +8,7 @@ export default function useBrandCategories() {
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch("/data/brandCategories.json");
-        const data = await res.json();
+        const data = await get("/brands"); // API returns array
         setBrands(data);
       } catch (err) {
         console.error("Failed to load brand categories:", err);
