@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { Navbar, Nav, Form, FormControl, NavDropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
-import productCategories from "./productCategories";
-import spaceCategories from "./spaceCategories";
-import brandCategories from "./brandCategories";
+import useProductCategories from "./productCategories";
+import useBrandCategories from "./brandCategories";
+import useSpaceCategories from "./spaceCategories";
 
 export default function MyNavbar({ onSearch }) {
-  const { categories, loading: loadingCategories } = productCategories();
-  const { spaces, loading: loadingSpaces } = spaceCategories();
-  const { brands, loading: loadingBrands } = brandCategories();
+  const { categories, loading: loadingCategories } = useProductCategories();
+  const { spaces, loading: loadingSpaces } = useSpaceCategories();
+  const { brands, loading: loadingBrands } = useBrandCategories();
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ export default function MyNavbar({ onSearch }) {
         <Navbar.Collapse id="navbar-nav">
           <Nav className="me-auto">
              {/* Dynamic Products dropdown */}
-            <NavDropdown title="Products" id="products-dropdown">
+            <NavDropdown title="Products" id="products-dropdown" key={categories.length}>
               {loadingCategories && (
                 <NavDropdown.Item disabled>Loading…</NavDropdown.Item>
               )}
