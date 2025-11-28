@@ -51,7 +51,6 @@ export default function ProductCollectionPage() {
 
               <div className="card-body">
                 <h5 className="card-title">{product.name}</h5>
-                <p className="text-muted">${product.price}</p>
                 <p className="card-text small">{product.description}</p>
 
 <Link className="btn btn-primary" to={`/products/${product.slug}`}>
