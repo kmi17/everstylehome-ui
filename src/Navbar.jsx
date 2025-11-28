@@ -7,7 +7,7 @@ import spaceCategories from "./spaceCategories";
 import brandCategories from "./brandCategories";
 
 export default function MyNavbar({ onSearch }) {
-  const { categories, loading } = productCategories();
+  const { categories, loading: loadingCategories } = productCategories();
   const { spaces, loading: loadingSpaces } = spaceCategories();
   const { brands, loading: loadingBrands } = brandCategories();
   const [query, setQuery] = useState("");
@@ -33,10 +33,11 @@ export default function MyNavbar({ onSearch }) {
           <Nav className="me-auto">
              {/* Dynamic Products dropdown */}
             <NavDropdown title="Products" id="products-dropdown">
+              {loadingCategories && (
+                <NavDropdown.Item disabled>Loading…</NavDropdown.Item>
+              )}
 
-              {/* {loading && <NavDropdown.Item disabled>Loading...</NavDropdown.Item>} */}
-
-              {!loading &&
+              {!loadingCategories &&
                 categories.map((item, index) => (
                   <NavDropdown.Item
                     key={index}
