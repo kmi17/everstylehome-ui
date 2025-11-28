@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {get} from "./utils/api";
+import { Link } from "react-router-dom";
+
 
 export default function ProductCollectionPage() {
   const { slug } = useParams();
@@ -52,9 +54,9 @@ export default function ProductCollectionPage() {
                 <p className="text-muted">${product.price}</p>
                 <p className="card-text small">{product.description}</p>
 
-                <a className="btn btn-primary" href={`/products/${product.slug}`}>
-                  View Product
-                </a>
+<Link className="btn btn-primary" to={`/products/${product.slug}`}>
+  View Product
+</Link>
               </div>
             </div>
           </div>
