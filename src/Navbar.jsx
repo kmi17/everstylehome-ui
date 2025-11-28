@@ -42,7 +42,7 @@ export default function MyNavbar({ onSearch }) {
                   <NavDropdown.Item
                     key={index}
                     as={Link}
-                    to={item.slug}
+                    to={`/products/${item.slug}`}
                   >
                     {item.name}
                   </NavDropdown.Item>
@@ -58,8 +58,8 @@ export default function MyNavbar({ onSearch }) {
                 brands.map((item, index) => (
                   <NavDropdown.Item
                     key={index}
-                     as={Link}
-                    to={item.slug}
+                    as={Link}
+                    to={`/brands/${item.slug}`}
                   >
                     {item.name}
                   </NavDropdown.Item>

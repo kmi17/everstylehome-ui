@@ -7,6 +7,7 @@ import Navbar from "./Navbar.jsx";
 import TopBar from "./Topbar.jsx";
 import ProductCollectionPage from "./ProductCollectionPage";
 import ProductDetailPage from "./ProductDetailPage.jsx";
+import BrandDetailPage from "./brandDetailPage.jsx";
 
 function App() {
 
@@ -17,11 +18,10 @@ function App() {
     <Navbar />
 
       <Routes>
-
         {/* Dynamic category page */}
         <Route path=":slug" element={<ProductCollectionPage />} />
         <Route path="/products/:slug" element={<ProductDetailPage />} />
-
+        <Route path="/brands/:slug" element={<BrandDetailPage />} />
 
         {/* Catch-all 404 */}
         <Route path="*" element={<div className="p-4">404 - Not Found</div>} />
