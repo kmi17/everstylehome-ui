@@ -34,17 +34,17 @@ export default function MyNavbar({ onSearch }) {
              {/* Dynamic Products dropdown */}
             <NavDropdown title="Products" id="products-dropdown">
 
-              {loading && <NavDropdown.Item disabled>Loading...</NavDropdown.Item>}
+              {/* {loading && <NavDropdown.Item disabled>Loading...</NavDropdown.Item>} */}
 
               {!loading &&
                 categories.map((item, index) => (
                   <NavDropdown.Item
                     key={index}
-                    href={item.url}
+                    href={item.slug}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {item.label}
+                    {item.name}
                   </NavDropdown.Item>
                 ))}
             </NavDropdown>
