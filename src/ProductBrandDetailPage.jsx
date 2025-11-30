@@ -2,7 +2,7 @@ import { useParams, Link} from "react-router-dom";
 import { useEffect, useState } from "react";
 import {get} from "./utils/api";
 
-export default function BrandDetailPage() {
+export default function ProductBrandDetailPage() {
   const { slug } = useParams();
   const [brand, setBrand] = useState(null);
   const [loading, setLoading] = useState(true);
