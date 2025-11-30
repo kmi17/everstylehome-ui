@@ -62,8 +62,6 @@ export default function ProductBrandDetailPage() {
               <div className="card-body d-flex flex-column">
                 <h5 className="card-title">{product.name}</h5>
 
-                <p className="text-muted mb-2">${product.price}</p>
-
                 <p className="card-text small flex-grow-1">
                   {product.description}
                 </p>
