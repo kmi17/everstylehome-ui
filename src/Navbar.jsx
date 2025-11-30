@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { Navbar, Nav, Form, FormControl, NavDropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaFileInvoiceDollar } from "react-icons/fa";
 import useProductCategories from "./productCategories";
 import useBrandCategories from "./brandCategories";
 import useSpaceCategories from "./spaceCategories";
+import { useQuote } from "./QuoteContext";
 
 export default function MyNavbar({ onSearch }) {
   const { categories, loading: loadingCategories } = useProductCategories();
   const { spaces, loading: loadingSpaces } = useSpaceCategories();
   const { brands, loading: loadingBrands } = useBrandCategories();
+  const { quoteItems } = useQuote();
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
@@ -112,6 +114,31 @@ export default function MyNavbar({ onSearch }) {
               }}
             />
           </Form>
+
+          {/* Quote Cart Icon */}
+<div className="ms-3 position-relative">
+  <Link to="/quote-cart" className="text-dark">
+    <FaFileInvoiceDollar size={24} />
+
+    {/* Show badge count */}
+    {quoteItems.length > 0 && (
+      <span
+        style={{
+          position: "absolute",
+          top: "-5px",
+          right: "-10px",
+          background: "red",
+          color: "white",
+          borderRadius: "50%",
+          fontSize: "12px",
+          padding: "2px 6px"
+        }}
+      >
+        {quoteItems.length}
+      </span>
+    )}
+  </Link>
+</div>
         </Navbar.Collapse>
       </div>
     </Navbar>

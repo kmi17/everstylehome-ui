@@ -1,9 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {get} from "./utils/api";
+import { useQuote } from "./QuoteContext";
+
 
 export default function ProductDetailPage() {
   const { slug } = useParams();
+  const { addToQuote } = useQuote();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -100,7 +103,8 @@ export default function ProductDetailPage() {
                       <td>{attr.casePack}</td>
                       <td>
                         {attr.addToQuote ? (
-                          <button className="btn btn-sm btn-success">Add to Quote</button>
+                          <button className="btn btn-sm btn-success"
+                          onClick={() => addToQuote(attr, product)}>Add to Quote</button>
                         ) : (
                           <span className="text-muted">—</span>
                         )}

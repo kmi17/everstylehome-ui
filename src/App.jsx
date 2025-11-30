@@ -9,11 +9,16 @@ import ProductCollectionPage from "./ProductCollectionPage";
 import ProductDetailPage from "./ProductDetailPage.jsx";
 import ProductBrandDetailPage from "./ProductBrandDetailPage.jsx";
 import SpaceDetailPage from "./SpaceDetailPage";
+import { QuoteProvider } from "./QuoteContext.jsx";
+import QuoteCartPage from "./QuoteCartPage.jsx";
+import QuoteRequestForm from "./QuoteRequestForm.jsx";
+
 function App() {
 
   return (
     <>
     <BrowserRouter>
+    <QuoteProvider>
     <TopBar />
     <Navbar />
 
@@ -23,9 +28,13 @@ function App() {
         <Route path="/products/:slug" element={<ProductDetailPage />} />
         <Route path="/brands/:slug" element={<ProductBrandDetailPage />} />
         <Route path="/spaces/:slug" element={<SpaceDetailPage />} />
+        <Route path="/quote-cart" element={<QuoteCartPage />} />
+        <Route path="/request-quote" element={<QuoteRequestForm />} />
+
         {/* Catch-all 404 */}
         <Route path="*" element={<div className="p-4">404 - Not Found</div>} />
       </Routes>
+      </QuoteProvider>
       </BrowserRouter>
     </>
     
