@@ -8,7 +8,7 @@ import TopBar from "./Topbar.jsx";
 import ProductCollectionPage from "./ProductCollectionPage";
 import ProductDetailPage from "./ProductDetailPage.jsx";
 import BrandDetailPage from "./brandDetailPage.jsx";
-
+import SpaceDetailPage from "./SpaceDetailPage";
 function App() {
 
   return (
@@ -19,10 +19,10 @@ function App() {
 
       <Routes>
         {/* Dynamic category page */}
-        <Route path=":slug" element={<ProductCollectionPage />} />
+        <Route path="/products/collections/:slug" element={<ProductCollectionPage />} />
         <Route path="/products/:slug" element={<ProductDetailPage />} />
         <Route path="/brands/:slug" element={<BrandDetailPage />} />
-
+        <Route path="/spaces/:slug" element={<SpaceDetailPage />} />
         {/* Catch-all 404 */}
         <Route path="*" element={<div className="p-4">404 - Not Found</div>} />
       </Routes>

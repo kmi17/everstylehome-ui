@@ -42,7 +42,7 @@ export default function MyNavbar({ onSearch }) {
                   <NavDropdown.Item
                     key={index}
                     as={Link}
-                    to={`/products/${item.slug}`}
+                    to={`/products/collections/${item.slug}`}
                   >
                     {item.name}
                   </NavDropdown.Item>
@@ -75,11 +75,10 @@ export default function MyNavbar({ onSearch }) {
                 spaces.map((item, index) => (
                   <NavDropdown.Item
                     key={index}
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    as={Link}
+                    to={`/spaces/${item.slug}`}
                   >
-                    {item.label}
+                    {item.name}
                   </NavDropdown.Item>
                 ))}
             </NavDropdown>

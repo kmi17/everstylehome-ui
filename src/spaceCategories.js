@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {get} from "./utils/api"
 
 export default function useSpaceCategories() {
   const [spaces, setSpaces] = useState([]);
@@ -7,8 +8,7 @@ export default function useSpaceCategories() {
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch("/data/spaceCategories.json");
-        const data = await res.json();
+        const data = await get("/spaces");
         setSpaces(data);
       } catch (err) {
         console.error("Failed to load space categories:", err);
