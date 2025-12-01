@@ -9,10 +9,11 @@
 }
 
 body {
-  padding-top: 105px; /* Prevent navbar overlap */
+ /* padding-top: 105px; /* Prevent navbar overlap */
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: #ffffff;
   color: #333;
+  padding-top: 0 !important; /* topbar (32px) + navbar (63px) */
 }
 
 :root {
@@ -471,4 +472,38 @@ a:hover {
   font-weight: 500;
   color: #222;
   letter-spacing: -0.3px;
+}
+
+* CLEAN SHOP BY SPACE GRID */
+.space-categories .grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  justify-items: center;
+}
+
+.space-card {
+  max-width: 340px;
+  width: 100%;
+}
+
+.space-card img {
+  width: 100%;
+  height: 260px;    /* <-- consistent height */
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+.space-card .card-body {
+  padding-top: 0.9rem;
+  text-align: center;
+}
+
+.space-card h4 {
+  margin: 1px;
+  padding: 0.9rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #111;
 }

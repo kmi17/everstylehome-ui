@@ -15,6 +15,7 @@ import QuoteRequestForm from "./QuoteRequestForm.jsx";
 import { ToastContainer, Slide} from "react-toastify";
 import HomePage from "./HomePage.jsx";
 import AllProductsPage from "./AllProductsPage.jsx";
+import Footer from "./Footer.jsx";
 import "react-toastify/dist/ReactToastify.css";
 
 
@@ -40,6 +41,8 @@ function App() {
         {/* Catch-all 404 */}
         <Route path="*" element={<div className="p-4">404 - Not Found</div>} />
       </Routes>
+
+      <Footer/>
        <ToastContainer
     position="bottom-right"
     autoClose={2500}

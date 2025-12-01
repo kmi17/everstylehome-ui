@@ -61,7 +61,7 @@ export default function HomePage() {
               <h4>Bedroom</h4>
             </div>
           </Link>
-          <Link to="/spaces/kitchen-dining" className="space-card">
+          <Link to="/spaces/kitchen" className="space-card">
             <img src="/images/kitchen.png" alt="Kitchen & Dining" />
             <div className="card-body">
               <h4>Kitchen & Dining</h4>
@@ -69,18 +69,6 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-
-      {/* PROMOTIONAL BANNERS / INFO SECTIONS */}
-      <section className="promo-banner py-5 text-center">
-        <h3>Wholesale & Closeout Textiles for Retailers & Wholesalers</h3>
-        <p>Ship nationwide, export worldwide — flexible programs for every business size.</p>
-        <Link to="/contact" className="btn btn-outline-dark">Get in Touch</Link>
-      </section>
-
-      {/* FOOTER (stub) */}
-      <footer className="site-footer py-4 text-center">
-        <p>&copy; {new Date().getFullYear()} EverStyle Home. All Rights Reserved.</p>
-      </footer>
 
     </div>
   );

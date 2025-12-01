@@ -8,7 +8,7 @@ export default function TopBar() {
       <div className="ark-topbar-inner">
         <a href="tel:+18001234567" className="ark-topbar-link">
           <FaPhoneAlt className="ark-topbar-icon" />
-          (800) 123-4567
+          (703) 832-6759
         </a>
 
         <span className="ark-divider">|</span>
@@ -21,7 +21,7 @@ export default function TopBar() {
         <span className="ark-divider">|</span>
 
         <a
-          href="https://wa.me/18001234567"
+          href="https://wa.me/17038326759"
           target="_blank"
           rel="noopener noreferrer"
           className="ark-topbar-link"

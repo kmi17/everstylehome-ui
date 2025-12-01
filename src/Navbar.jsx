@@ -13,22 +13,26 @@ export default function MyNavbar({ onSearch }) {
   const { brands, loading: loadingBrands } = useBrandCategories();
   const { quoteItems } = useQuote();
   const [query, setQuery] = useState("");
+  const [expanded, setExpanded] = useState(false); // <-- NEW
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (onSearch) onSearch(query);
     navigate("/products");
+    setExpanded(false); // <-- close menu after search
   };
 
+  const handleCloseMenu = () => setExpanded(false); // <-- reusable function
+
   return (
-    <Navbar expand="lg" sticky="top">
+    <Navbar expand="lg" sticky="top"expanded={expanded}  onToggle={setExpanded}>
 
       <div className="container-fluid">
 
       <div className="d-flex justify-content-between align-items-center w-100">
         {/* Brand */}
-        <Navbar.Brand as={Link} to="/" className="fw-bold">
+        <Navbar.Brand as={Link} to="/" className="fw-bold" onClick={handleCloseMenu}>
           EverStyle Home
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
@@ -43,6 +47,7 @@ export default function MyNavbar({ onSearch }) {
                     key={index}
                     as={Link}
                     to={`/products/collections/${item.slug}`}
+                    onClick={handleCloseMenu}
                   >
                     {item.name}
                   </NavDropdown.Item>
@@ -55,6 +60,7 @@ export default function MyNavbar({ onSearch }) {
                     key={index}
                     as={Link}
                     to={`/brands/${item.slug}`}
+                    onClick={handleCloseMenu} 
                   >
                     {item.name}
                   </NavDropdown.Item>
@@ -69,6 +75,7 @@ export default function MyNavbar({ onSearch }) {
                     key={index}
                     as={Link}
                     to={`/spaces/${item.slug}`}
+                    onClick={handleCloseMenu}
                   >
                     {item.name}
                   </NavDropdown.Item>
@@ -76,9 +83,9 @@ export default function MyNavbar({ onSearch }) {
             </NavDropdown>
 
             {/* <Nav.Link as={Link} to="/retailer">Find a Retailer</Nav.Link> */}
-            <Nav.Link as={Link} to="/insights">Insights</Nav.Link>
-            <Nav.Link as={Link} to="/about">About</Nav.Link>
-            <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+            {/* <Nav.Link as={Link} to="/insights">Insights</Nav.Link> */}
+            <Nav.Link as={Link} to="/about" onClick={handleCloseMenu}>About</Nav.Link>
+            <Nav.Link as={Link} to="/contact" onClick={handleCloseMenu}>Contact</Nav.Link>
           </Nav>
 
 
@@ -103,7 +110,7 @@ export default function MyNavbar({ onSearch }) {
 
           {/* Quote Cart Icon */}
 <div className="ark-quote-icon position-relative align-self-start">
-  <Link to="/quote-cart" className="text-dark">
+  <Link to="/quote-cart" onClick={handleCloseMenu} className="text-dark">
     <FaFileInvoiceDollar size={22} />
 
     {/* Show badge count */}
