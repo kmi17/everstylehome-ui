@@ -33,19 +33,13 @@ export default function HomePage() {
           <Link to="/products/collections/towels-collection-1" className="collection-card">
             <img src="/images/towel-collection.png" alt="Towels Collection" />
             <div className="card-body">
-              <h3>Towels Collection</h3>
+              <h3> Towels Collection</h3>
             </div>
           </Link>
           <Link to="/products/collections/rugs-collection-1" className="collection-card">
-            <img src="/path/to/rugs-collection.jpg" alt="Rugs Collection" />
+            <img src="/images/rug-collection.png" alt="Rugs Collection" />
             <div className="card-body">
               <h3>Rugs Collection</h3>
-            </div>
-          </Link>
-          <Link to="/products/collections/blankets-collection" className="collection-card">
-            <img src="/path/to/blankets-collection.jpg" alt="Throws & Blankets" />
-            <div className="card-body">
-              <h3>Throws & Blankets</h3>
             </div>
           </Link>
         </div>
@@ -56,27 +50,21 @@ export default function HomePage() {
         <h2 className="section-title">Shop by Space</h2>
         <div className="grid grid-4 gap-4">
           <Link to="/spaces/bathroom" className="space-card">
-            <img src="/path/to/bathroom-space.jpg" alt="Bathroom" />
+            <img src="/images/bathroom.png" alt="Bathroom" />
             <div className="card-body">
               <h4>Bathroom</h4>
             </div>
           </Link>
           <Link to="/spaces/bedroom" className="space-card">
-            <img src="/path/to/bedroom-space.jpg" alt="Bedroom" />
+            <img src="/images/bedroom.png" alt="Bedroom" />
             <div className="card-body">
               <h4>Bedroom</h4>
             </div>
           </Link>
           <Link to="/spaces/kitchen-dining" className="space-card">
-            <img src="/path/to/kitchen-space.jpg" alt="Kitchen & Dining" />
+            <img src="/images/kitchen.png" alt="Kitchen & Dining" />
             <div className="card-body">
               <h4>Kitchen & Dining</h4>
-            </div>
-          </Link>
-          <Link to="/spaces/living-spaces" className="space-card">
-            <img src="/path/to/living-space.jpg" alt="Living Spaces" />
-            <div className="card-body">
-              <h4>Living Spaces</h4>
             </div>
           </Link>
         </div>

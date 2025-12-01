@@ -75,7 +75,7 @@ export default function MyNavbar({ onSearch }) {
                 ))}
             </NavDropdown>
 
-            <Nav.Link as={Link} to="/retailer">Find a Retailer</Nav.Link>
+            {/* <Nav.Link as={Link} to="/retailer">Find a Retailer</Nav.Link> */}
             <Nav.Link as={Link} to="/insights">Insights</Nav.Link>
             <Nav.Link as={Link} to="/about">About</Nav.Link>
             <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
