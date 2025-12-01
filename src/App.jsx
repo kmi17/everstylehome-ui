@@ -27,7 +27,8 @@ function App() {
     <QuoteProvider>
     <TopBar />
     <Navbar />
-
+{/* 🌟 MAIN CONTENT WRAPPER — fixes footer spacing */}
+        <div className="page-wrapper">
       <Routes>
         <Route path="/" element={<HomePage />}/>
         <Route path="/products/all" element={<AllProductsPage/>} />
@@ -41,6 +42,7 @@ function App() {
         {/* Catch-all 404 */}
         <Route path="*" element={<div className="p-4">404 - Not Found</div>} />
       </Routes>
+      </div>
 
       <Footer/>
        <ToastContainer

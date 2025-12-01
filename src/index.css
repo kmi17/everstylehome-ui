@@ -507,3 +507,8 @@ a:hover {
   font-size: 1.1rem;
   color: #111;
 }
+
+.page-wrapper {
+  min-height: calc(100vh - 160px); /* Adjust if needed */
+  padding-bottom: 40px; /* small spacing above footer */
+}
