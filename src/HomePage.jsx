@@ -31,7 +31,7 @@ export default function HomePage() {
         <div className="grid grid-3 gap-4">
           {/* Example card — replicate & map from data */}
           <Link to="/products/collections/towels-collection-1" className="collection-card">
-            <img src="/path/to/towel-collection.jpg" alt="Towels Collection" />
+            <img src="/images/towel-collection.png" alt="Towels Collection" />
             <div className="card-body">
               <h3>Towels Collection</h3>
             </div>
