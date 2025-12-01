@@ -1,0 +1,99 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+export default function HomePage() {
+  return (
+    <div>
+
+      {/* HERO / BANNER */}
+   <section className="hero-editorial">
+  <div className="hero-container">
+    
+    {/* LEFT SIDE: TEXT */}
+    <div className="hero-text">
+      <h1>Welcome to EverStyle Home</h1>
+      <p>Quality textiles for every room — towels, rugs, bedding & more.</p>
+      <Link to="/products/all" className="hero-btn">Shop All Products</Link>
+    </div>
+
+    {/* RIGHT SIDE: IMAGE */}
+    <div className="hero-photo">
+      <img src="/images/hero-banner.png" alt="Home textiles" />
+    </div>
+
+  </div>
+</section>
+
+
+      {/* FEATURED COLLECTIONS */}
+      <section className="featured-collections container py-5">
+        <h2 className="section-title">Featured Collections</h2>
+        <div className="grid grid-3 gap-4">
+          {/* Example card — replicate & map from data */}
+          <Link to="/products/collections/towels-collection-1" className="collection-card">
+            <img src="/path/to/towel-collection.jpg" alt="Towels Collection" />
+            <div className="card-body">
+              <h3>Towels Collection</h3>
+            </div>
+          </Link>
+          <Link to="/products/collections/rugs-collection-1" className="collection-card">
+            <img src="/path/to/rugs-collection.jpg" alt="Rugs Collection" />
+            <div className="card-body">
+              <h3>Rugs Collection</h3>
+            </div>
+          </Link>
+          <Link to="/products/collections/blankets-collection" className="collection-card">
+            <img src="/path/to/blankets-collection.jpg" alt="Throws & Blankets" />
+            <div className="card-body">
+              <h3>Throws & Blankets</h3>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* SHOP BY SPACE */}
+      <section className="space-categories container py-5">
+        <h2 className="section-title">Shop by Space</h2>
+        <div className="grid grid-4 gap-4">
+          <Link to="/spaces/bathroom" className="space-card">
+            <img src="/path/to/bathroom-space.jpg" alt="Bathroom" />
+            <div className="card-body">
+              <h4>Bathroom</h4>
+            </div>
+          </Link>
+          <Link to="/spaces/bedroom" className="space-card">
+            <img src="/path/to/bedroom-space.jpg" alt="Bedroom" />
+            <div className="card-body">
+              <h4>Bedroom</h4>
+            </div>
+          </Link>
+          <Link to="/spaces/kitchen-dining" className="space-card">
+            <img src="/path/to/kitchen-space.jpg" alt="Kitchen & Dining" />
+            <div className="card-body">
+              <h4>Kitchen & Dining</h4>
+            </div>
+          </Link>
+          <Link to="/spaces/living-spaces" className="space-card">
+            <img src="/path/to/living-space.jpg" alt="Living Spaces" />
+            <div className="card-body">
+              <h4>Living Spaces</h4>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* PROMOTIONAL BANNERS / INFO SECTIONS */}
+      <section className="promo-banner py-5 text-center">
+        <h3>Wholesale & Closeout Textiles for Retailers & Wholesalers</h3>
+        <p>Ship nationwide, export worldwide — flexible programs for every business size.</p>
+        <Link to="/contact" className="btn btn-outline-dark">Get in Touch</Link>
+      </section>
+
+      {/* FOOTER (stub) */}
+      <footer className="site-footer py-4 text-center">
+        <p>&copy; {new Date().getFullYear()} EverStyle Home. All Rights Reserved.</p>
+      </footer>
+
+    </div>
+  );
+}

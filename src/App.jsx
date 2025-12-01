@@ -12,6 +12,11 @@ import SpaceDetailPage from "./SpaceDetailPage";
 import { QuoteProvider } from "./QuoteContext.jsx";
 import QuoteCartPage from "./QuoteCartPage.jsx";
 import QuoteRequestForm from "./QuoteRequestForm.jsx";
+import { ToastContainer, Slide} from "react-toastify";
+import HomePage from "./HomePage.jsx";
+import AllProductsPage from "./AllProductsPage.jsx";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function App() {
 
@@ -23,7 +28,8 @@ function App() {
     <Navbar />
 
       <Routes>
-        {/* Dynamic category page */}
+        <Route path="/" element={<HomePage />}/>
+        <Route path="/products/all" element={<AllProductsPage/>} />
         <Route path="/products/collections/:slug" element={<ProductCollectionPage />} />
         <Route path="/products/:slug" element={<ProductDetailPage />} />
         <Route path="/brands/:slug" element={<ProductBrandDetailPage />} />
@@ -34,6 +40,17 @@ function App() {
         {/* Catch-all 404 */}
         <Route path="*" element={<div className="p-4">404 - Not Found</div>} />
       </Routes>
+       <ToastContainer
+    position="bottom-right"
+    autoClose={2500}
+    transition={Slide}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    pauseOnHover
+    draggable
+    theme="light"
+  />
       </QuoteProvider>
       </BrowserRouter>
     </>

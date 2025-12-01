@@ -22,25 +22,23 @@ export default function MyNavbar({ onSearch }) {
   };
 
   return (
-    <Navbar expand="lg" sticky="top" style={{ width: "100%", paddingLeft: 0, paddingRight: 0 }}>
-      {/* Remove Container completely for full width */}
-      <div style={{ display: "flex", alignItems: "center", width: "100%", padding: "0 1rem" }}>
+    <Navbar expand="lg" sticky="top">
+
+      <div className="container-fluid">
+
+      <div className="d-flex justify-content-between align-items-center w-100">
         {/* Brand */}
         <Navbar.Brand as={Link} to="/" className="fw-bold">
           EverStyle Home
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
+      </div>
 
         <Navbar.Collapse id="navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="ark-menu flex-column flex-lg-row mx-lg-auto">
              {/* Dynamic Products dropdown */}
-            <NavDropdown title="Products" id="products-dropdown" key={categories.length}>
-              {loadingCategories && (
-                <NavDropdown.Item disabled>Loading…</NavDropdown.Item>
-              )}
-
-              {!loadingCategories &&
-                categories.map((item, index) => (
+            <NavDropdown title="Products" id="products-menu" className="ark-dropdown">
+                {categories.map((item, index) => (
                   <NavDropdown.Item
                     key={index}
                     as={Link}
@@ -51,13 +49,8 @@ export default function MyNavbar({ onSearch }) {
                 ))}
             </NavDropdown>
 
-            <NavDropdown title="Brands" id="brands-dropdown">
-              {loadingBrands && (
-                <NavDropdown.Item disabled>Loading…</NavDropdown.Item>
-              )}
-
-              {!loadingBrands &&
-                brands.map((item, index) => (
+            <NavDropdown title="Brands" id="brands-menu" className="ark-dropdown">
+              {brands.map((item, index) => (
                   <NavDropdown.Item
                     key={index}
                     as={Link}
@@ -67,13 +60,10 @@ export default function MyNavbar({ onSearch }) {
                   </NavDropdown.Item>
                 ))}
             </NavDropdown>
-            {/* Spaces Dropdown */}
-            <NavDropdown title="Spaces" id="spaces-dropdown">
-              {loadingSpaces && (
-                <NavDropdown.Item disabled>Loading…</NavDropdown.Item>
-              )}
 
-              {!loadingSpaces &&
+            {/* Spaces Dropdown */}
+            <NavDropdown title="Spaces" id="spaces-menu" className="ark-dropdown">
+              {
                 spaces.map((item, index) => (
                   <NavDropdown.Item
                     key={index}
@@ -91,56 +81,44 @@ export default function MyNavbar({ onSearch }) {
             <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
           </Nav>
 
+
+{/* MOBILE & DESKTOP SEARCH + QUOTE */}
+      <div className="ark-right d-flex flex-column flex-lg-row align-items-lg-center gap-3 mt-3 mt-lg-0">
           {/* Search bar with icon */}
-          <Form
-            className="d-flex position-relative"
+          {/* <Form
             onSubmit={handleSubmit}
-            style={{ maxWidth: "400px", width: "100%" }}
+            className="ark-search position-relative w-100"
           >
             <FormControl
               type="search"
               placeholder="Search products..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              style={{ paddingLeft: "2.5rem" }}
+              className="w-100"
             />
             <FaSearch
-              style={{
-                position: "absolute",
-                left: "0.75rem",
-                top: "50%",
-                transform: "translateY(-50%)",
-                color: "#6c757d"
-              }}
+              className="ark-search-icon"
             />
-          </Form>
+          </Form> */}
 
           {/* Quote Cart Icon */}
-<div className="ms-3 position-relative">
+<div className="ark-quote-icon position-relative align-self-start">
   <Link to="/quote-cart" className="text-dark">
-    <FaFileInvoiceDollar size={24} />
+    <FaFileInvoiceDollar size={22} />
 
     {/* Show badge count */}
     {quoteItems.length > 0 && (
       <span
-        style={{
-          position: "absolute",
-          top: "-5px",
-          right: "-10px",
-          background: "red",
-          color: "white",
-          borderRadius: "50%",
-          fontSize: "12px",
-          padding: "2px 6px"
-        }}
-      >
+       className="ark-quote-badge">
         {quoteItems.length}
       </span>
     )}
   </Link>
 </div>
+</div>
         </Navbar.Collapse>
       </div>
+
     </Navbar>
   );
 }

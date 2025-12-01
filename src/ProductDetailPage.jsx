@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {get} from "./utils/api";
 import { useQuote } from "./QuoteContext";
+import { toast } from "react-toastify";
 
 
 export default function ProductDetailPage() {
@@ -24,6 +25,15 @@ export default function ProductDetailPage() {
 
     loadProduct();
   }, [slug]);
+
+  const handleAddToQuote = (attr, product) => {
+  addToQuote(attr, product);
+
+  toast.success(
+    `Added to Quote: ${product.name} (${attr.sku})`,
+    { icon: "🧾" }
+  );
+};
 
   if (loading) return <div className="p-4">Loading product...</div>;
   if (!product) return <div className="p-4">Product not found.</div>;
@@ -104,7 +114,7 @@ export default function ProductDetailPage() {
                       <td>
                         {attr.addToQuote ? (
                           <button className="btn btn-sm btn-success"
-                          onClick={() => addToQuote(attr, product)}>Add to Quote</button>
+                          onClick={() => handleAddToQuote(attr, product)}>Add to Quote</button>
                         ) : (
                           <span className="text-muted">—</span>
                         )}

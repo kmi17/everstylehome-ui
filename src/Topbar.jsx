@@ -1,25 +1,36 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { FaPhoneAlt, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 
 export default function TopBar() {
   return (
-    <div style={{ fontSize: "0.8rem" }}> 
-      <Container> {/* same Container as Navbar */}
-        <Row className="justify-content-end py-1">
-          <Col xs="auto">
-            <span className="me-3">📞 +1 234 567 890</span>
-            <span className="me-3">✉️ support@shopeasy.com</span>
-            <a
-              href="https://wa.me/1234567890"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-decoration-none"
-            >
-              💬 WhatsApp
-            </a>
-          </Col>
-        </Row>
-      </Container>
+    <div className="ark-topbar">
+      <div className="ark-topbar-inner">
+        <a href="tel:+18001234567" className="ark-topbar-link">
+          <FaPhoneAlt className="ark-topbar-icon" />
+          (800) 123-4567
+        </a>
+
+        <span className="ark-divider">|</span>
+
+        <a href="mailto:info@everstylehome.com" className="ark-topbar-link">
+          <FaEnvelope className="ark-topbar-icon" />
+          info@everstylehome.com
+        </a>
+
+        <span className="ark-divider">|</span>
+
+        <a
+          href="https://wa.me/18001234567"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ark-topbar-link"
+        >
+          <FaWhatsapp className="ark-topbar-icon" />
+          WhatsApp
+        </a>
+      </div>
     </div>
   );
 }
+
