@@ -18,7 +18,9 @@ export default function QuoteCartPage() {
             <th>Product</th>
             <th>SKU</th>
             <th>UPC</th>
+            <th>Case Pack</th>
             <th>Qty</th>
+            
             <th></th>
           </tr>
         </thead>
@@ -35,6 +37,7 @@ export default function QuoteCartPage() {
               <td>{item.productName}</td>
               <td>{item.sku}</td>
               <td>{item.upc}</td>
+              <td>{item.casePack}</td>
               <td>
                 <input
                   type="number"
